@@ -3,7 +3,7 @@ import 'react-quill/dist/quill.snow.css';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-function Main({notes, onAddNote,activeNote,setActiveNote,saveBlock,deleteNote}){
+function Main({notes, onAddNote,activeNote,setActiveNote,saveBlock,deleteNote,editing,toggleEdit}){
 const [value, setValue] = useState('');
 const location = useLocation();
 
@@ -22,7 +22,7 @@ useEffect(() => {
     }
     console.log(url);
     //setValue(notes[activeNote]);
-}, [location]);
+}, [location,editing]);
 
 
 if(notes.length <=0 ){// no notes in 
@@ -34,8 +34,10 @@ if(notes.length <=0 ){// no notes in
     )
 }
 
-return (
-<div className="main">
+if(editing === false){
+
+    return (
+        <div className="main">
     <div className="main-title">
         <input type="text" id='main-titleSet' ></input>
 
@@ -53,6 +55,37 @@ return (
 </div>
 
 )
+}else{
+
+    return(
+    <div className="main">
+    <div className="main-title">
+        <div type="text" id='main-titleSet' dangerouslySetInnerHTML={ { __html: notes[activeNote].title } } ></div>
+
+        <div className="main-buttonHolder"> 
+
+        <button className="main-buttons" id = "main-SaveButton" onClick={ toggleEdit } >edit</button>
+        <button className="main-buttons" onClick={() => deleteNote(notes[activeNote].key)}>delete</button>
+        </div>
+    </div>
+    <div id='main-Date'></div>
+    <div className='mainBody'>
+    <div dangerouslySetInnerHTML={ { __html: notes[activeNote].body } }></div>
+    </div>
+    
+</div>
+
+
+
+
+    )
 }
+
+
+
+
+}
+
+
 
 export default Main;

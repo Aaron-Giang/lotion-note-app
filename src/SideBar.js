@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-
+const createMarkup = (note) =>{
+    var temp = document.createElement('div');
+    temp.innerHTML = note.body;
+    return temp.textContent || temp.innerText || '';
+}
 
 function SideBar({notes, onAddNote,getIndex,activeNote,setActiveNote}){
 return(
@@ -26,15 +30,13 @@ return(
                     
                 </div>
             
-                <p dangerouslySetInnerHTML={ { __html: note.body.substring(0,100) }}></p>
-
                 <small className="note-meta">
                     last Modified {note.lastModified}
                 </small>
+                <p dangerouslySetInnerHTML={ { __html: createMarkup(note) }}></p>
 
-                <p>
-                    id {note.key}
-                </p>
+
+       
                 
             </div>
             

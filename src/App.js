@@ -15,7 +15,7 @@ function App() {
   const [notes,setNotes] = useState(JSON.parse(localStorage.notes) || []);
   const [toggle, setToggle] = useState(true);
   const [activeNote, setActiveNote] = useState(0);
-
+  const[editing,setEditing] = useState(false);
   useEffect(()=>{
 
     localStorage.setItem("notes",JSON.stringify(notes));
@@ -84,6 +84,8 @@ function App() {
       };
       onUpdateNote(newNote);
       }
+
+      toggleEdit();
     }
     
     const deleteNote = (key) =>{
@@ -110,6 +112,13 @@ function App() {
     };
     
   
+    const toggleEdit =()=>{
+      if (editing === true){
+        setEditing(false);
+      }else{
+        setEditing(true);
+      }
+    }
 
   return (
     <div>
@@ -133,6 +142,8 @@ function App() {
     setActiveNote={setActiveNote}
     saveBlock={saveBlock}
     deleteNote ={deleteNote}
+    editing={editing}
+    toggleEdit={toggleEdit}
     />
     </div>
 

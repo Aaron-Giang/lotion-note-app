@@ -104,12 +104,17 @@ html {
   height: calc(100vh - 195px);
   overflow-y: auto;
 }
+.note-meta{
+  color: #bebebe;
+  font-size: 15px;
+}
 .sideNav-note{
   padding: 25px;
   cursor: pointer;
 }
 .sideNav-note:hover{
-  background-color: #9b9b9b;
+  background-color: #8ca4e6;
+  color: #ffffff ;
 }
 .sideNav-note-title{
   display: flex;
@@ -179,7 +184,9 @@ html {
   font-weight: bold;
   font-style: oblique;
 }
-
+#main-Date{
+  border-bottom: 2px #ccc solid;
+}
 .sideNav-note.active,
 .sideNav-note-note.active small {
   background: rgb(2, 64, 95);
