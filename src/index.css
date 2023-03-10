@@ -14,3 +14,143 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+html {
+  font-family: 'Trebuchet MS', tahoma, verdana, arial, sans-serif;
+  color: #141823;
+  overflow: hidden;
+}
+
+
+/*Top nav bar*/
+#title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#titleM{
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+#titleSmall{
+  color: #727272;
+}
+
+#noteToggle{
+  font-size: 2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;  
+  border-radius: 10px;
+  font-weight: bold;
+
+}
+
+#noteToggle:hover{
+  background-color: rgb(235, 235, 235);
+}
+
+
+
+.contents{
+  display: flex;
+}
+
+
+
+/*Side bar*/
+.sideBar{
+  width: 30%;
+  height: calc(100vh - 190px);
+  border-right: 2px #ccc solid;
+}
+
+
+.NavBar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  border-bottom: 2px #ccc solid;
+}
+
+.navTitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px #ccc solid;
+  padding-left: 10px;
+}
+
+.sideNav-Add{
+  border: none;
+  background-color: rgb(255, 255, 255);
+  font-size: 3rem;
+  height: auto;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  user-select: none;
+}
+
+.sideNav-Add:hover{
+  background-color: rgb(165, 165, 165);
+  color: azure;
+}
+
+.sideNav-notes{
+  height: calc(100vh - 195px);
+  overflow-y: auto;
+}
+.sideNav-note{
+  padding: 25px;
+  cursor: pointer;
+}
+.sideNav-note:hover{
+  background-color: #9b9b9b;
+}
+.sideNav-note-title{
+  display: flex;
+  justify-content: space-between;
+}
+
+/*note edittor */
+.main{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 130px);
+}
+
+.mainBody{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  font-size: 20px;
+}
+
+.main-title{
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-buttons{
+  background-color: rgb(255, 255, 255);
+  border: none;
+}
+
+.main-buttons:hover{
+  background-color: #727272;
+}
+.main-buttons:active{
+  background-color: rgb(139, 190, 190);
+}
+
+.ql-editor{
+  min-height: calc(100vh - 200px) !important;
+  max-height: calc(100vh - 200px);
+  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: auto;
+}
