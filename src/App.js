@@ -89,9 +89,14 @@ function App() {
     const deleteNote = (key) =>{
 
       setNotes(notes.filter((note) => note.key !== key));
-      setActiveNote(activeNote-1);
+      console.log(activeNote);
+
+      if (activeNote >0){
+        setActiveNote(activeNote-1);
+      }
     } 
 
+    
     //updats note list to a new note list
     const onUpdateNote = (updatedNote) =>{
       const updatedNoteArray = notes.map((noteee)=>{

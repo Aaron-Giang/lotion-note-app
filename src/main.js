@@ -10,13 +10,15 @@ const location = useLocation();
 useEffect(() => {
     let url = window.location.pathname.split("/");
     if(url.length >=3 && !(isNaN(url[2])) ){
-        setActiveNote(url[2]);
-        document.getElementById("main-titleSet").value = notes[url[2]].title ;
-        setValue(notes[url[2]].body)
-        console.log(url[2]);
-        console.log(notes[url[2]].title );
-
-        console.log("setted");
+        
+        if(notes.length > activeNote ){
+            setActiveNote(url[2]);
+            document.getElementById("main-titleSet").value = notes[url[2]].title ;
+            setValue(notes[url[2]].body)
+            document.getElementById("main-Date").innerText = notes[url[2]].lastModified;
+        }
+    }else{
+        setActiveNote(0);
     }
     console.log(url);
     //setValue(notes[activeNote]);
@@ -43,7 +45,7 @@ return (
         <button className="main-buttons" onClick={() => deleteNote(notes[activeNote].key)}>delete</button>
         </div>
     </div>
-
+    <div id='main-Date'></div>
     <div className='mainBody'>
     <ReactQuill theme="snow" value={value} onChange={setValue} ></ReactQuill>
     </div>

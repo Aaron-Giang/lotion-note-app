@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+
+
+
 function SideBar({notes, onAddNote,getIndex,activeNote,setActiveNote}){
 return(
 
@@ -14,13 +17,16 @@ return(
         {notes.map((note) => (
             <Link to = {"/notes/" + getIndex(note.key,notes)}>
             
-            <div className="sideNav-note">
+            <div className={`sideNav-note ${note.key === notes[activeNote].key &&"active"}`}>
                 <div className="sideNav-note-title">
-                    <strong>{note.title}</strong>
+                    <em> 
+                        <u>{note.title} </u>
+                        
+                    </em>
                     
                 </div>
             
-                <p dangerouslySetInnerHTML={{ __html: note.body.substring(0,100) }}></p>
+                <p dangerouslySetInnerHTML={ { __html: note.body.substring(0,100) }}></p>
 
                 <small className="note-meta">
                     last Modified {note.lastModified}

@@ -81,6 +81,7 @@ html {
   align-items: center;
   border-bottom: 2px #ccc solid;
   padding-left: 10px;
+  
 }
 
 .sideNav-Add{
@@ -135,10 +136,14 @@ html {
   display: flex;
   justify-content: space-between;
 }
-
+.main-buttonHolder{
+  flex-grow: 1;
+  display: flex;
+}
 .main-buttons{
   background-color: rgb(255, 255, 255);
   border: none;
+  flex-grow: 1;
 }
 
 .main-buttons:hover{
@@ -163,4 +168,20 @@ html {
   text-align: center;
   font-size: 2rem;
   color: #999;
+  user-select: none;
+  
+}
+
+#main-titleSet{
+  flex-grow: 9;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+.sideNav-note.active,
+.sideNav-note-note.active small {
+  background: rgb(2, 64, 95);
+  color: white;
 }
