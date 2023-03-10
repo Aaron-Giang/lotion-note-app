@@ -20,7 +20,7 @@ return(
                     
                 </div>
             
-                <p>{note.body}</p>
+                <p dangerouslySetInnerHTML={{ __html: note.body.substring(0,100) }}></p>
 
                 <small className="note-meta">
                     last Modified {note.lastModified}

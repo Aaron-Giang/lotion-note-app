@@ -1,13 +1,27 @@
 import SideBar from "./SideBar";
 import Main from "./main";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import Title from './Title';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
 function App() {
-  const [notes,setNotes] = useState([]);
+  const [notes,setNotes] = useState(JSON.parse(localStorage.notes) || []);
   const [toggle, setToggle] = useState(true);
-  const [activeNote, setActiveNote] = useState(false);
+  const [activeNote, setActiveNote] = useState(0);
+
+  useEffect(()=>{
+
+    localStorage.setItem("notes",JSON.stringify(notes));
+  },[notes]);
+
+
   const options = {
     year: "numeric",
     month: "long",
@@ -46,12 +60,52 @@ function App() {
   };
 
   const getIndex = (id) => {
+
     for(let x = 0 ; x < notes.length;x++){
       if(notes[x].key === id){
         return x;
       }
     }
   }
+
+  const saveBlock = (index,inputTitle,inputText) =>{
+    console.log(index);
+    console.log(notes.length);
+
+    if(notes.length >= index && notes.length > 0){
+      const newNote = {
+        key: notes[index].key,
+        title:inputTitle,
+        body:inputText,
+        lastModified:formatDate(Date.now()),
+        dateCreated:notes[index].dateCreated,
+  
+  
+      };
+      onUpdateNote(newNote);
+      }
+    }
+    
+    const deleteNote = (key) =>{
+
+      setNotes(notes.filter((note) => note.key !== key));
+      setActiveNote(activeNote-1);
+    } 
+
+    //updats note list to a new note list
+    const onUpdateNote = (updatedNote) =>{
+      const updatedNoteArray = notes.map((noteee)=>{
+        if (noteee.key == notes[activeNote].key){
+          return updatedNote;
+        }
+        return noteee;
+      });
+      
+      setNotes(updatedNoteArray);
+    };
+    
+  
+
   return (
     <div>
 
@@ -59,14 +113,22 @@ function App() {
     <div className="contents">
       
     {toggle &&
-    <SideBar notes={notes} 
+    <SideBar 
+    notes={notes} 
     onAddNote={onAddNote} 
     getIndex={getIndex} 
-    activeNote = {activeNote}
-    setActiveNote = {setActiveNote}
+    activeNote ={activeNote}
+    setActiveNote={setActiveNote}
     />
     }
-    <Main />
+    <Main 
+    notes={notes} 
+    onAddNote={onAddNote}
+    activeNote ={activeNote}
+    setActiveNote={setActiveNote}
+    saveBlock={saveBlock}
+    deleteNote ={deleteNote}
+    />
     </div>
 
     </div>

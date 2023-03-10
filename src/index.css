@@ -60,7 +60,8 @@ html {
 
 /*Side bar*/
 .sideBar{
-  width: 30%;
+  min-width: 20%;
+  max-width: 20%;
   height: calc(100vh - 190px);
   border-right: 2px #ccc solid;
 }
@@ -153,4 +154,13 @@ html {
   overflow: hidden;
   overflow-y: auto;
   overflow-x: auto;
+}
+
+.no-active-note {
+  width: 70%;
+  height: 100vh;
+  line-height: 100vh;
+  text-align: center;
+  font-size: 2rem;
+  color: #999;
 }
