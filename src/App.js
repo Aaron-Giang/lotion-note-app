@@ -90,11 +90,14 @@ function App() {
     
     const deleteNote = (key) =>{
 
-      setNotes(notes.filter((note) => note.key !== key));
-      console.log(activeNote);
+      if(window.confirm("Are you sure?")){
 
-      if (activeNote >0){
-        setActiveNote(activeNote-1);
+        setNotes(notes.filter((note) => note.key !== key));
+        console.log(activeNote);
+  
+        if (activeNote >0){
+          setActiveNote(activeNote-1);
+        }
       }
     } 
 
