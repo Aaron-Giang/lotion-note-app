@@ -3,15 +3,11 @@ import Main from "./main";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import Title from './Title';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
 
 function App() {
+  if(localStorage.getItem("notes") === null){
+    localStorage.setItem("notes",JSON.stringify([]));
+  }
   const [notes,setNotes] = useState(JSON.parse(localStorage.notes) || []);
   const [toggle, setToggle] = useState(true);
   const [activeNote, setActiveNote] = useState(0);
